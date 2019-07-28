@@ -7,7 +7,10 @@ import {
 import ToDoItem from '../ToDoItem/ToDoItem';
 
 const ToDoList = (props) => {
-  const toDoItem = props.toDoItems.map((item, i ) => <ToDoItem key={i} toDo={item}/>);
+  const aTest = (val) => alert(val);
+  const toDoItem = props.toDoItems.map((item, i ) => 
+    <ToDoItem key={i} toDo={item} pressItem={aTest}/>
+  );
 
   return (
     <View style={styles.toDoList}>{ toDoItem }</View>

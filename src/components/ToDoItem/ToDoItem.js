@@ -2,14 +2,20 @@ import React from 'react';
 import {
   View,
   Text,
-  StyleSheet
+  Platform,
+  StyleSheet,
+  TouchableOpacity,
+  TouchableNativeFeedback,
 } from 'react-native';
 
-const ToDoItem = (props) => (
-  <View  style={styles.container}>
-    <Text> { props.toDo } </Text>
-  </View>
-)
+const ToDoItem = (props) => {
+  const pressItem = () => props.pressItem(props.toDo);
+  const Item = <View style={styles.container}><Text>{ props.toDo }</Text></View>;
+
+  return Platform.OS === 'android' 
+    ? (<TouchableNativeFeedback onPress={pressItem}>{ Item }</TouchableNativeFeedback>)
+    : (<TouchableOpacity onPress={pressItem}>{ Item }</TouchableOpacity>)
+};
 
 const styles = StyleSheet.create({
   container: {
