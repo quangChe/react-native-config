@@ -7,7 +7,7 @@ import {
   TextInput, 
   Button} from 'react-native';
 
-import ToDoItem from './src/components/ToDoItem/ToDoItem';
+import ToDoList from './src/components/ToDoList/ToDoList';
 
 export default class App extends Component {
   state = {
@@ -30,8 +30,6 @@ export default class App extends Component {
   }
 
   render() {  
-    const toDoItem = this.state.toDoList.map((todo, i) => <ToDoItem key={i} toDo={todo}/>);
-
     return (
       <View style={styles.container}>
         <View style={styles.form}>
@@ -43,7 +41,7 @@ export default class App extends Component {
             title='Add'
             onPress={this.submitText}/>
         </View>
-        <View style={styles.toDoList}>{ toDoItem }</View>
+        <ToDoList toDoItems={this.state.toDoList}/>
       </View>
     );
   }
@@ -70,8 +68,4 @@ const styles = StyleSheet.create({
   button: {
     width: '40%',
   },
-  toDoList: {
-    width: '100%',
-    flex: 1,
-  }
 });
