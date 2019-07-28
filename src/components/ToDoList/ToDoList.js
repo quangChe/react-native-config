@@ -7,9 +7,8 @@ import {
 import ToDoItem from '../ToDoItem/ToDoItem';
 
 const ToDoList = (props) => {
-  const aTest = (val) => alert(val);
   const toDoItem = props.toDoItems.map((item, i ) => 
-    <ToDoItem key={i} toDo={item} pressItem={aTest}/>
+    <ToDoItem key={i} toDo={item} pressItem={() => props.deleteItem(i)}/>
   );
 
   return (

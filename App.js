@@ -13,17 +13,25 @@ export default class App extends Component {
     toDoList: [],
   }
 
-  submitText = (text) => {
+  submitText = text => {
     this.setState(prevState => {
       return { toDoList: prevState.toDoList.concat(text) };
     });
+  }
+
+  deleteToDo = index => {
+    this.setState(prevState => {
+      return {
+        toDoList: prevState.toDoList.filter((v, i) => i !== index)
+      };
+    })
   }
 
   render() {  
     return (
       <View style={styles.container}>
         <ToDoInput submit={this.submitText}/>
-        <ToDoList toDoItems={this.state.toDoList}/>
+        <ToDoList toDoItems={this.state.toDoList} deleteItem={this.deleteToDo}/>
       </View>
     );
   }
