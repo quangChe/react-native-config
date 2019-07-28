@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  View,
+  ScrollView,
   StyleSheet
 } from 'react-native';
 
@@ -12,7 +12,7 @@ const ToDoList = (props) => {
   );
 
   return (
-    <View style={styles.toDoList}>{ toDoItem }</View>
+    <ScrollView style={styles.toDoList}>{ toDoItem }</ScrollView>
   )
 }
 
@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
   toDoList: {
     width: '100%',
     flex: 1,
+    paddingHorizontal: 26,
   }
 })
 

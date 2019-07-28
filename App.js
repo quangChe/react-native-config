@@ -44,6 +44,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
     paddingTop: Platform.OS === 'ios' ? 50 : 0,
-    padding: 26,
   }, 
 });
