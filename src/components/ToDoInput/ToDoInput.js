@@ -26,11 +26,13 @@ export default class ToDoInput extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <TextInput style={styles.input}
+        <TextInput 
+          style={styles.input}
           placeholder='Enter text'
           onChangeText={this.changeText}
           value={this.state.text}/>
-        <Button style={styles.button}
+        <Button 
+          style={styles.button}
           title='Add'
           onPress={this.submitInput}/>
       </View>

@@ -9,7 +9,10 @@ import {
 } from 'react-native';
 
 const ToDoItem = (props) => {
-  const Item = <View style={styles.container}><Text>{ props.toDo }</Text></View>;
+  const Item = 
+    <View style={styles.container}>
+      <Text>{ props.toDo }</Text>
+    </View>;
 
   return Platform.OS === 'android' 
     ? (<TouchableNativeFeedback onPress={props.pressItem}>{ Item }</TouchableNativeFeedback>)
