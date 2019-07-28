@@ -10,13 +10,26 @@ import {
 export default class App extends Component {
   state = {
     text: '',
+    toDoList: [],
   }
 
   changeText = (text) => {
     this.setState({text})
   }
 
+  submitText = () => {
+    this.setState(prevState => {
+      return (prevState.text.length) 
+        ? { toDoList: prevState.toDoList.concat(prevState.text) }
+        : null;
+    });
+  }
+
   render() {
+    const ToDoList = this.state.toDoList.map((text, i) => 
+      <Text key={i}>{ text }</Text>
+    );
+
     return (
       <View style={styles.container}>
         <View style={styles.form}>
@@ -27,6 +40,9 @@ export default class App extends Component {
           <Button style={styles.button}
             title='Add'
             onPress={this.submitText}/>
+        </View>
+        <View>
+          {ToDoList}
         </View>
       </View>
     );
