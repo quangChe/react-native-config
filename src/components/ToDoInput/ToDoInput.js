@@ -32,6 +32,7 @@ export default class ToDoInput extends Component {
           onChangeText={this.changeText}
           value={this.state.text}/>
         <Button 
+          color='#29AB87'
           style={styles.button}
           title='Add'
           onPress={this.submitInput}/>
@@ -46,12 +47,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingHorizontal: 26,
+    padding: 26,
   },
   input: {
-    width: '60%',
+    width: '82%',
+    borderBottomWidth: 1.5,
+    borderBottomColor: '#ffcf74',
+    paddingBottom: 10,
   },
   button: {
-    width: '40%',
+    width: '18%',
   },
 });

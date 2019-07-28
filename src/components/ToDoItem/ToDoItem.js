@@ -22,6 +22,7 @@ const ToDoItem = (props) => {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#eee',
+    borderRadius: 10,
     padding: 10,
     width: '100%',
     marginTop: 10,
