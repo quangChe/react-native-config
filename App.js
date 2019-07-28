@@ -7,6 +7,8 @@ import {
   TextInput, 
   Button} from 'react-native';
 
+import ToDoItem from './src/components/ToDoItem/ToDoItem';
+
 export default class App extends Component {
   state = {
     text: '',
@@ -18,17 +20,17 @@ export default class App extends Component {
   }
 
   submitText = () => {
+    if (!this.state.text.length) {
+      return; 
+    }
+
     this.setState(prevState => {
-      return (prevState.text.length) 
-        ? { toDoList: prevState.toDoList.concat(prevState.text) }
-        : null;
+      return { toDoList: prevState.toDoList.concat(prevState.text) };
     });
   }
 
-  render() {
-    const ToDoList = this.state.toDoList.map((text, i) => 
-      <Text key={i}>{ text }</Text>
-    );
+  render() {  
+    const toDoItem = this.state.toDoList.map((todo, i) => <ToDoItem key={i} toDo={todo}/>);
 
     return (
       <View style={styles.container}>
@@ -41,9 +43,7 @@ export default class App extends Component {
             title='Add'
             onPress={this.submitText}/>
         </View>
-        <View>
-          {ToDoList}
-        </View>
+        <View style={styles.toDoList}>{ toDoItem }</View>
       </View>
     );
   }
@@ -56,11 +56,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
     paddingTop: Platform.OS === 'ios' ? 50 : 0,
+    padding: 26,
   }, 
   form: {
     width: '100%',
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
     alignItems: 'center',
   },
   input: {
@@ -68,5 +69,9 @@ const styles = StyleSheet.create({
   },
   button: {
     width: '40%',
+  },
+  toDoList: {
+    width: '100%',
+    flex: 1,
   }
 });
