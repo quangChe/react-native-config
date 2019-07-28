@@ -19,12 +19,15 @@ export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <TextInput style={{width: 300, padding: 10}}
-          placeholder='Enter text'
-          onChangeText={this.changeText}
-          value={this.state.text}/>
-        <Button title='Add'/>
-
+        <View style={styles.form}>
+          <TextInput style={styles.input}
+            placeholder='Enter text'
+            onChangeText={this.changeText}
+            value={this.state.text}/>
+          <Button style={styles.button}
+            title='Add'
+            onPress={this.submitText}/>
+        </View>
       </View>
     );
   }
@@ -38,9 +41,16 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FCFF',
     paddingTop: Platform.OS === 'ios' ? 50 : 0,
   }, 
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  form: {
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
   },
+  input: {
+    width: '60%',
+  },
+  button: {
+    width: '40%',
+  }
 });
