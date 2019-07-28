@@ -1,18 +1,19 @@
 import React from 'react';
 import {
-  ScrollView,
+  FlatList,
   StyleSheet
 } from 'react-native';
 
 import ToDoItem from '../ToDoItem/ToDoItem';
 
 const ToDoList = (props) => {
-  const toDoItem = props.toDoItems.map((item, i ) => 
-    <ToDoItem key={i} toDo={item} pressItem={() => props.deleteItem(i)}/>
-  );
+  const renderToDo = (info) => <ToDoItem toDo={info.item.text} pressItem={() => props.deleteItem(info.item.key)}/>;
 
   return (
-    <ScrollView style={styles.toDoList}>{ toDoItem }</ScrollView>
+    <FlatList 
+      style={styles.toDoList}
+      data={props.toDoItems}
+      renderItem={renderToDo}/>
   )
 }
 

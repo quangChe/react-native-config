@@ -15,14 +15,14 @@ export default class App extends Component {
 
   submitText = text => {
     this.setState(prevState => {
-      return { toDoList: prevState.toDoList.concat(text) };
+      return { toDoList: prevState.toDoList.concat({key: Math.random().toString(), text}) };
     });
   }
 
-  deleteToDo = index => {
+  deleteToDo = id => {
     this.setState(prevState => {
       return {
-        toDoList: prevState.toDoList.filter((v, i) => i !== index)
+        toDoList: prevState.toDoList.filter((item) => item.key !== id)
       };
     })
   }
